@@ -1,0 +1,79 @@
+body {
+	background: #ccc;
+	display: flex;
+	justify-content: center;
+	padding: 2rem;
+}
+
+.panel {
+	background: linear-gradient(#d3d3d3, #bdbdbd);
+	width: 150px;
+	border: 2px solid #aaa;
+	padding: 1rem 0.5rem;
+	border-radius: 5px;
+	text-align: center;
+	font-family: sans-serif;
+}
+.panel h5 {
+	font-weight: bold;
+	margin-bottom: 1rem;
+}
+
+.jack-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.5rem 0.75rem;
+	justify-items: center;
+}
+
+.jack {
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	background-color: #333;
+	border: 3px solid #666;
+}
+
+.jack.active {
+	background-color: #0a0;
+}
+
+.midi {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background-color: #111;
+	border: 3px solid #444;
+	margin: 0.75rem auto 0.25rem;
+	position: relative;
+}
+
+.midi::before {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 50%;
+	width: 4px;
+	height: 4px;
+	background: #999;
+	border-radius: 50%;
+	transform: translateX(-50%);
+}
+
+.midi::after {
+	content: '';
+	position: absolute;
+	bottom: 8px;
+	left: 50%;
+	width: 20px;
+	height: 10px;
+	background: radial-gradient(circle, #999 3px, transparent 4px);
+	background-size: 8px 8px;
+	background-repeat: repeat-x;
+	transform: translateX(-50%);
+}
+
+.label {
+	font-size: 0.75rem;
+	margin-bottom: 0.25rem;
+}
