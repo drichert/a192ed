@@ -1,7 +1,11 @@
 import { useState } from 'react'
 import './A192.css'
 
-function InputJack({ number }) {
+interface InputJackProps {
+	number: number
+}
+
+const InputJack: React.FC<InputJackProps> = ({ number }) => {
 	const [active, setActive] = useState(false)
 
 	const mouseEnter = () => setActive(true)	
@@ -11,11 +15,10 @@ function InputJack({ number }) {
 		<div
 			onMouseEnter={mouseEnter}
 			onMouseLeave={mouseLeave}
-			className={"jack " + (active ? 'active' : '')}
+			className={"my-auto jack " + (active ? 'active' : '')}
 			/*className={{ jack: true, active }}*/
 			title={`Input ${number}`}
-		>
-		</div>
+		>{number}</div>
 	)
 }
 
@@ -24,9 +27,19 @@ function A192() {
 		<div className="panel">
 			<h5>A-192</h5>
 			<div className="jack-grid mb-3">
-				{Array.from({ length: 16 }, (_, ndx) => (
-					<InputJack number={ndx + 1} key={ndx} />
-				))}
+					{Array.from({ length: 8 }, (_, ndx: number) => (
+						<>
+						<InputJack number={ndx + 1} key={ndx} />
+						<InputJack number={ndx + 9} key={ndx+8} />
+						</>
+					))}
+				{/*
+				<div className="row">
+					{Array.from({ length: 8 }, (_, ndx: number) => (
+						<InputJack number={ndx + 9} key={ndx + 9} />
+					))}
+				</div>
+				*/}
 			</div>
 		</div>
 	)
