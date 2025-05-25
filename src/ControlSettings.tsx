@@ -1,3 +1,5 @@
+import ParamMap from './lib/PocketC/ParamMap.ts'
+
 const ControlSettings = function ({ controlNumber }) {
 	return (
 		<form>
@@ -13,6 +15,15 @@ const ControlSettings = function ({ controlNumber }) {
 					className="form-control"
 					min="1" max="16" step="1"
 				/>
+			</div>
+
+			<div className="form-group">
+				<label htmlFor="param">Parameter</label>
+				<select id="param">
+					{Object.entries(ParamMap).map(([k, v]) => (
+						<option key={k} value={k}>{`${k}: ${v}`}</option>
+					))}
+				</select>
 			</div>
 		</form>
 	)
