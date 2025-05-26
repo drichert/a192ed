@@ -5,7 +5,8 @@ import A192 from './A192.tsx'
 import ControlSettings from './ControlSettings.tsx'
 
 interface ControlConfig {
-  [key: number]: {
+  [index: number]: {
+    number: number,
     channel: number,
     event: string,
     param: string
@@ -14,9 +15,20 @@ interface ControlConfig {
 
 const App = function() {
   const [controlNumber, setControlNumber] = useState(1)
-  // TODO knob configs
-  const [controlConfig, setControlConfig] = useState({})
 
+  // TODO knob configs
+  const [controlConfig, setControlConfig] = useState([
+    { number: 1, channel: 0, event: 0, param: 1 },
+  ])
+
+  const updateConfig = (controlNumber: number, key: number, value: number) => {
+    const cfg = structuredClone(controlConfig)
+
+    cfg.find((c) => c.number == controlNumber)[key] = value
+    //cfg[controlNumber][key] = value
+
+    setControlConfig(cfg)
+  }
 	return (
 		<div className="container">
       <div className="row">
