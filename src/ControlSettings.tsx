@@ -1,5 +1,5 @@
 import EventMap from './lib/PocketC/EventMap.ts'
-import ParamMap from './lib/PocketC/ParamMap.ts'
+//import ParamMap from './lib/PocketC/ParamMap.ts'
 
 const ControlSettings = function ({ controlNumber }) {
 	return (
@@ -21,8 +21,8 @@ const ControlSettings = function ({ controlNumber }) {
 			<div className="mb-3">
 				<label htmlFor="event" className="">Event</label>
 				<select id="event" className="form-control">
-					{Object.entries(EventMap).map(([k, v]) => (
-						<option key={k} value={k}>{`${k}: ${v}`}</option>
+					{EventMap.entries().map(([k, v]) => (
+						<option key={k} value={k}>{`${k}: ${v.name}`}</option>
 					))}
 				</select>
 			</div>
