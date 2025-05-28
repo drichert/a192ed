@@ -1,7 +1,3 @@
-type ParamOptions = {
-	[key: number]: string	
-}
-
 type PocketCEvent = {
 	name: string,
 	paramInfo?: string,
@@ -9,17 +5,18 @@ type PocketCEvent = {
 	details?: string
 }
 
-const controllerInfo: string = 'Controller Number'
-const noteInfo: string = 'Note Number'
-const nrpnInfo: string = 'Manufacturer Dependent'
+const controllerInfo = 'Controller Number'
+/*
+const noteInfo = 'Note Number'
+const nrpnInfo = 'Manufacturer Dependent'
 
-const pitchOptions: ParamOptions = {
+const pitchOptions: Record<number, string>= {
 	0: 'Pitch Bend Sens.',
 	1: 'Master Fine Tune',
 	2: 'Master Coarse Tune'
 }
 
-const drumOptions: ParamOptions = {
+const drumOptions: Record<number, string> = {
 	13: 'Surdo Mute',
 	14: 'Surdo Open',
 	15: 'Hi Q',
@@ -76,14 +73,8 @@ const drumOptions: ParamOptions = {
 	66: 'Timbale L',
 	67: 'Agogo H'
 }
+*/
 
-//const EventAttrs: Readonly<Record<string, object>> = {
-//	CONTROL_NUMBER: {
-//		jj
-//	}
-//}
-
-// TODO use ReadonlyMap
 const EventMap: ReadonlyMap<number, PocketCEvent> = new Map([
 	/* 'free' params omitted */
 	[0, { name: 'Controller', paramInfo: controllerInfo }],

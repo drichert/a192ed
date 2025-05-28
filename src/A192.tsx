@@ -1,4 +1,5 @@
-//import { useState } from 'react'
+import React from 'react';
+import type { MouseEvent } from 'react';
 import './A192.css'
 
 interface InputJackProps {
@@ -7,27 +8,26 @@ interface InputJackProps {
 }
 
 const InputJack: React.FC<InputJackProps> = ({ number, onSelectControl }) => {
-	let controlNum: number
-	let active 
+	const onClick = (event: MouseEvent<HTMLElement>) => {
+		const { target } = event
 
-	const onClick = (event) => {
 		document.querySelectorAll('.jack').forEach((el: Element) => {
 			el.classList.remove('active')	
 		})
 
-		controlNum = event.target.dataset.num
-		onSelectControl(controlNum)
+		//let controlNum: number
 
-		event.target.classList.add('active')
+		if (target instanceof HTMLElement) {
+			console.log(target.dataset.num)
+			//controlNum = Math.floor(Number(target.dataset.num))
+			onSelectControl(number)
+
+			target.classList.add('active')
+		}
 	}
 
 	return (
-		<div
-			onClick={onClick}
-			className={"my-auto jack " + (active ? 'active' : '')}
-			title={`Input ${number}`}
-			data-num={number}
-		>{number}</div>
+		<div onClick={onClick} className="my-auto jack" title={`Input ${number}`}>{number}</div>
 	)
 }
 
@@ -35,7 +35,6 @@ interface A192Props {
 	onSelectControl: (num: number) => void
 }
 
-//const InputJack: React.FC<InputJackProps> = ({ number, onSelectControl }) => {
 const A192: React.FC<A192Props> = ({ onSelectControl }) => {
 	return (
 		<div className="panel">
